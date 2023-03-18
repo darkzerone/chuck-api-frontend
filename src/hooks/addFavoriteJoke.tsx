@@ -16,6 +16,5 @@ export default function addFavoriteJoke(joke: ChuckNorrisJokeType) {
     itemsToStore = JSON.stringify(newJokeArray)
   }
 
-  dispatchEvent(new Event('addedJoke'))
   localStorage.setItem('favorited-jokes', itemsToStore)
 }

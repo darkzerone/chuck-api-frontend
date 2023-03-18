@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import addFavoriteJoke from '../../../hooks/addFavoriteJoke'
 import getFavoriteJokes from '../../../hooks/getFavoriteJokes'
+import removeFavoriteJoke from '../../../hooks/removeFavoriteJoke'
 import { ChuckNorrisJokeType } from '../../../types/chuckNorrisApiTypes'
 import Spinner from '../../shared/Spinner/Spinner'
 import FrontPageContext from '../context/FrontPageContext'
@@ -11,8 +12,12 @@ function JokesContainer() {
   const [favoriteJokeIds, setfavoriteJokeIds] = useState<string[]>([])
 
   const mapFavoriteJokesToIds = () => getFavoriteJokes().map((joke) => joke.id)
-  const onAddJokeToFavoritesHandler = (joke: ChuckNorrisJokeType) => {
-    addFavoriteJoke(joke)
+  const onFavoriteClickHandler = (joke: ChuckNorrisJokeType) => {
+    if (favoriteJokeIds.includes(joke.id)) {
+      removeFavoriteJoke(joke)
+    } else {
+      addFavoriteJoke(joke)
+    }
     setfavoriteJokeIds(mapFavoriteJokesToIds())
   }
 
@@ -28,7 +33,7 @@ function JokesContainer() {
         jokes.map((joke) => (
           <div className='joke-container' key={joke.id}>
             <span>{joke.value}</span>
-            <button onClick={() => onAddJokeToFavoritesHandler(joke)}>
+            <button onClick={() => onFavoriteClickHandler(joke)}>
               {favoriteJokeIds.includes(joke.id) ? (
                 <i className='bi bi-star-fill' />
               ) : (
