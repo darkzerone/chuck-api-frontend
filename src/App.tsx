@@ -1,11 +1,11 @@
 import { Outlet } from 'react-router'
-import './App.css'
+import { StyledApp } from './App.styled'
 
 function App() {
   return (
-    <div className='App'>
+    <StyledApp>
       <Outlet />
-    </div>
+    </StyledApp>
   )
 }
 
