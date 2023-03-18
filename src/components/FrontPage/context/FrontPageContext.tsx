@@ -1,15 +1,18 @@
 import { createContext, ReactNode, useCallback, useEffect, useRef, useState } from 'react'
+import { asyncNoop } from '../../../helpers/noop'
 import fetchChuckNorrisJoke from '../../../hooks/fetchChuckNorrisJoke'
 import { ChuckNorrisJokeType } from '../../../types/chuckNorrisApiTypes'
 
 interface FrontPageContextInterface {
   loading: boolean
   jokes: ChuckNorrisJokeType[]
+  insertNewJoke: () => Promise<void>
 }
 
 const FrontPageContext = createContext<FrontPageContextInterface>({
   loading: false,
   jokes: [],
+  insertNewJoke: asyncNoop,
 })
 
 type FrontPageContextContextProviderPropsType = {
@@ -20,9 +23,16 @@ const FrontPageContextProvider = ({ children }: FrontPageContextContextProviderP
   const [jokes, setJokes] = useState<ChuckNorrisJokeType[]>([])
   const loading = useRef<boolean>(false)
 
-  const context = {
-    loading: loading.current,
-    jokes,
+  const insertNewJoke = async () => {
+    const newJoke = await fetchChuckNorrisJoke()
+
+    setJokes((prev) => {
+      const newArray = [...prev]
+      newArray.pop()
+      newArray.unshift(newJoke)
+
+      return [...newArray]
+    })
   }
 
   const getJokesForFirstRender = useCallback(async () => {
@@ -39,6 +49,12 @@ const FrontPageContextProvider = ({ children }: FrontPageContextContextProviderP
     loading.current = false
     setJokes([...fetchedJokes])
   }, [])
+
+  const context = {
+    loading: loading.current,
+    jokes,
+    insertNewJoke: insertNewJoke,
+  }
 
   useEffect(() => {
     getJokesForFirstRender()
