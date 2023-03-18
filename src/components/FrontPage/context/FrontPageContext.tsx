@@ -39,7 +39,6 @@ const FrontPageContextProvider = ({ children }: FrontPageContextContextProviderP
   }, [])
 
   useEffect(() => {
-    console.log('calling')
     getJokesForFirstRender()
   }, [getJokesForFirstRender])
 
