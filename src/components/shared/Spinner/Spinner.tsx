@@ -2,7 +2,7 @@ import { StyledSpinner } from './Spinner.styled'
 
 function Spinner() {
   return (
-    <StyledSpinner>
+    <StyledSpinner data-testid='spinner'>
       <div className='lds-roller'>
         <div></div>
         <div></div>
