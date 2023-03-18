@@ -1,4 +1,4 @@
-import { StyledSpinner } from './spinner.styled'
+import { StyledSpinner } from './Spinner.styled'
 
 function Spinner() {
   return (

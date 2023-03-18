@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import Spinner from '../../shared/spinner'
+import Spinner from '../../shared/Spinner/Spinner'
 import FrontPageContext from '../context/FrontPageContext'
 import { StyledJokesContainer } from '../FrontPage.styled'
 
