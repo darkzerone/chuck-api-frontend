@@ -26,6 +26,8 @@ const FrontPageContextProvider = ({ children }: FrontPageContextContextProviderP
   }
 
   const getJokesForFirstRender = useCallback(async () => {
+    if (loading.current === true) return
+
     loading.current = true
     const newJokePromiseArray = []
 

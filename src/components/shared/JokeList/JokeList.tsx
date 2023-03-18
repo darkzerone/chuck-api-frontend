@@ -1,14 +1,18 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import addFavoriteJoke from '../../../hooks/addFavoriteJoke'
 import getFavoriteJokes from '../../../hooks/getFavoriteJokes'
 import removeFavoriteJoke from '../../../hooks/removeFavoriteJoke'
 import { ChuckNorrisJokeType } from '../../../types/chuckNorrisApiTypes'
-import Spinner from '../../shared/Spinner/Spinner'
-import FrontPageContext from '../context/FrontPageContext'
-import { StyledJokesContainer } from '../FrontPage.styled'
+import Spinner from '../Spinner/Spinner'
+import { StyledJokeList } from './JokeList.styled'
 
-function JokesContainer() {
-  const { jokes, loading } = useContext(FrontPageContext)
+interface JokesContainerProps {
+  jokes: ChuckNorrisJokeType[]
+  loading?: boolean
+  onFavoriteClickedCallback?: (updatedFavoriteList: ChuckNorrisJokeType[]) => void
+}
+
+function JokeList({ jokes, loading, onFavoriteClickedCallback }: JokesContainerProps) {
   const [favoriteJokeIds, setfavoriteJokeIds] = useState<string[]>([])
 
   const mapFavoriteJokesToIds = () => getFavoriteJokes().map((joke) => joke.id)
@@ -18,7 +22,9 @@ function JokesContainer() {
     } else {
       addFavoriteJoke(joke)
     }
+
     setfavoriteJokeIds(mapFavoriteJokesToIds())
+    onFavoriteClickedCallback?.(getFavoriteJokes())
   }
 
   useEffect(() => {
@@ -26,7 +32,7 @@ function JokesContainer() {
   }, [])
 
   return (
-    <StyledJokesContainer>
+    <StyledJokeList>
       {loading ? (
         <Spinner />
       ) : (
@@ -43,8 +49,8 @@ function JokesContainer() {
           </div>
         ))
       )}
-    </StyledJokesContainer>
+    </StyledJokeList>
   )
 }
 
-export default JokesContainer
+export default JokeList
