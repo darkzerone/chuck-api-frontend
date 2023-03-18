@@ -4,6 +4,7 @@ import './index.css'
 import App from './App'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import FrontPage from './components/FrontPage/FrontPage'
+import { FrontPageContextProvider } from './components/FrontPage/context/FrontPageContext'
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <FrontPage />,
+        element: (
+          <FrontPageContextProvider>
+            <FrontPage />
+          </FrontPageContextProvider>
+        ),
       },
     ],
   },
