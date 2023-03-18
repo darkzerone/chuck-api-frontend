@@ -30,17 +30,16 @@ export const StyledTimerContainer = styled.div`
 
 export const StyledJokesContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   min-width: 400px;
   max-width: 600px;
 
-  div {
+  .joke-container {
     background-color: ${colors.gray};
     width: 100%;
     border-radius: 5px;
     padding: 5px;
-
-    span {
-    }
+    margin: 10px;
   }
 `
