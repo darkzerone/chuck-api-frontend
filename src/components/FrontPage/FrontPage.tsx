@@ -1,9 +1,6 @@
-import {
-  StyledHeaderContainer,
-  StyledFrontPageContainer,
-  StyledJokesContainer,
-  StyledTimerContainer,
-} from './FrontPage.styled'
+import { StyledFrontPageContainer, StyledHeaderContainer } from './FrontPage.styled'
+import JokesContainer from './JokesContainer/JokesContainer'
+import TimerButton from './TimerButton/TimerButton'
 
 function FrontPage() {
   return (
@@ -11,20 +8,8 @@ function FrontPage() {
       <StyledHeaderContainer>
         <h1>Random Chuck Norris Jokes!</h1>
       </StyledHeaderContainer>
-      <StyledTimerContainer>
-        <button
-          onClick={() => {
-            console.log('Getting more jokes')
-          }}
-        >
-          Get me more jokes!
-        </button>
-      </StyledTimerContainer>
-      <StyledJokesContainer>
-        <div>
-          <span>Chuck joke!</span>
-        </div>
-      </StyledJokesContainer>
+      <TimerButton />
+      <JokesContainer />
     </StyledFrontPageContainer>
   )
 }
