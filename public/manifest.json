@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Chuck Api Frontend",
+  "name": "Chuck Api fronted using CRA",
   "icons": [
     {
       "src": "favicon.ico",
