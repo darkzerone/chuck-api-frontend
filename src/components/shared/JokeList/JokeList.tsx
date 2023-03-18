@@ -32,7 +32,7 @@ function JokeList({ jokes, loading, onFavoriteClickedCallback }: JokesContainerP
   }, [])
 
   return (
-    <StyledJokeList>
+    <StyledJokeList data-testid='joke-list'>
       {loading ? (
         <Spinner />
       ) : (

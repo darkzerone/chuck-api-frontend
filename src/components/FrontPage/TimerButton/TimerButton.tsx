@@ -31,7 +31,7 @@ function TimerButton() {
 
   return (
     <>
-      <StyledTimerContainer>
+      <StyledTimerContainer data-testid='timer-container'>
         <button onClick={() => activateTimer()}>Get me more jokes!</button>
       </StyledTimerContainer>
       <StyledTimerText>Countdown for new joke: {count === 0 ? 'fetching!' : count}</StyledTimerText>
