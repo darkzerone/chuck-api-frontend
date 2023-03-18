@@ -5,6 +5,7 @@ import App from './App'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import FrontPage from './components/FrontPage/FrontPage'
 import { FrontPageContextProvider } from './components/FrontPage/context/FrontPageContext'
+import FavoritePage from './components/FavoritePage/FavoritePage'
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
             <FrontPage />
           </FrontPageContextProvider>
         ),
+      },
+      {
+        path: '/favorites',
+        element: <FavoritePage />,
       },
     ],
   },

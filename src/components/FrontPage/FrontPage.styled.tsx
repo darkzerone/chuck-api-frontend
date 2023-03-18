@@ -13,14 +13,24 @@ export const StyledFrontPageContainer = styled.div`
   align-items: center;
 `
 
-export const StyledTimerContainer = styled.div`
+export const StyledActionsContainer = styled.div`
+  display: flex;
+  flex-direciton: row;
+  justify-content: space-around;
+  align-items: center;
   margin: 20px;
+  width: 100%;
+  max-width: 600px;
+`
 
+export const StyledTimerContainer = styled.div`
   button {
     padding: 10px;
     font-size: 15px;
     border-radius: 5px;
     border: none;
+    font-family: 'Sono', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+      'Helvetica Neue', sans-serif;
 
     &:hover {
       cursor: pointer;
@@ -28,18 +38,6 @@ export const StyledTimerContainer = styled.div`
   }
 `
 
-export const StyledJokesContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-width: 400px;
-  max-width: 600px;
-
-  .joke-container {
-    background-color: ${colors.gray};
-    width: 100%;
-    border-radius: 5px;
-    padding: 5px;
-    margin: 10px;
-  }
+export const StyledTimerText = styled.span`
+  color: ${colors.white};
 `
